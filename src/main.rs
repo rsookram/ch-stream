@@ -84,10 +84,7 @@ impl Iterator for Stream {
         Some(if fastrand::u8(0..100) < self.newline_prob {
             '\n'
         } else {
-            char::from_u32(fastrand::u32(
-                self.first as u32..=self.last_inclusive as u32,
-            ))
-            .unwrap()
+            fastrand::char(self.first..=self.last_inclusive)
         })
     }
 }
